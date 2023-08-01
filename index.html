@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="test"></p>
+    <canvas id="canvas01" width="200" height="200">
+        canvas要素をサポートしていませんよー。
+    </canvas>
+
+    <script>
+        "use strict";
+
+        const canvas01 = document.getElementById("canvas01");
+
+        if (canvas01.getContext) {
+            const context=canvas01.getContext("2d");
+            
+            context.beginPath();
+
+            const frame1=()=>{
+                const now = new Date();
+                let seconds=now.getSeconds();
+                console.log(seconds*10);
+                context.arc(100,100,seconds*10,0,Math.PI*2,false);
+                context.stroke();
+                requestAnimationFrame(frame1);
+            }
+            frame1();
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
